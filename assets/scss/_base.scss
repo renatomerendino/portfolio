@@ -1,0 +1,91 @@
+// Import color module and variables
+@use "sass:color";
+@use "variables" as vars;
+@use "mixins" as mix;
+
+// Reset and basic styles
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: vars.$font-family-base;
+  font-size: vars.$font-size-base;
+  line-height: 1.6;
+  color: vars.$text-color;
+  background-color: white;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: vars.$font-weight-bold;
+  margin-bottom: vars.$spacer;
+  color: vars.$secondary-color;
+}
+
+p {
+  margin-bottom: vars.$spacer;
+}
+
+a {
+  color: vars.$primary-color;
+  text-decoration: none;
+  transition: color vars.$transition-speed vars.$transition-timing;
+  
+  &:hover {
+    color: color.scale(vars.$primary-color, $lightness: -15%);
+  }
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+// Common utility classes
+.text-center {
+  text-align: center;
+}
+
+.text-primary {
+  color: vars.$primary-color !important;
+}
+
+.text-secondary {
+  color: vars.$secondary-color !important;
+}
+
+.bg-light {
+  background-color: vars.$light-color !important;
+}
+
+.bg-dark {
+  background-color: vars.$dark-color !important;
+}
+
+.section-padding {
+  padding: vars.$section-padding;
+}
+
+.mb-1 { margin-bottom: vars.$spacer * 0.25; }
+.mb-2 { margin-bottom: vars.$spacer * 0.5; }
+.mb-3 { margin-bottom: vars.$spacer; }
+.mb-4 { margin-bottom: vars.$spacer * 1.5; }
+.mb-5 { margin-bottom: vars.$spacer * 3; }
+
+.mt-1 { margin-top: vars.$spacer * 0.25; }
+.mt-2 { margin-top: vars.$spacer * 0.5; }
+.mt-3 { margin-top: vars.$spacer; }
+.mt-4 { margin-top: vars.$spacer * 1.5; }
+.mt-5 { margin-top: vars.$spacer * 3; }
+
+.py-1 { padding-top: vars.$spacer * 0.25; padding-bottom: vars.$spacer * 0.25; }
+.py-2 { padding-top: vars.$spacer * 0.5; padding-bottom: vars.$spacer * 0.5; }
+.py-3 { padding-top: vars.$spacer; padding-bottom: vars.$spacer; }
+.py-4 { padding-top: vars.$spacer * 1.5; padding-bottom: vars.$spacer * 1.5; }
+.py-5 { padding-top: vars.$spacer * 3; padding-bottom: vars.$spacer * 3; } 

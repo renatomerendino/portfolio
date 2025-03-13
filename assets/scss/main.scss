@@ -1,0 +1,116 @@
+// Import and use all modules
+@use 'variables' as vars;
+@use 'mixins' as mix;
+@use 'base';
+@use 'layout';
+@use 'components';
+@use 'responsive';
+
+// Base styles
+body {
+  font-family: vars.$font-family-base;
+  color: vars.$text-color;
+  line-height: 1.6;
+}
+
+a {
+  transition: all vars.$transition-speed ease;
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+// Profile Image
+.profile-img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border: 5px solid vars.$primary-color;
+}
+
+// Social Links
+.social-links {
+  a {
+    color: vars.$dark-color;
+    transition: all vars.$transition-speed ease;
+    
+    &:hover {
+      color: vars.$primary-color;
+      transform: translateY(-3px);
+    }
+  }
+}
+
+// Skills Grid using CSS Grid
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 2rem;
+  
+  .skill-item {
+    text-align: center;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform vars.$transition-speed ease;
+    
+    &:hover {
+      transform: translateY(-5px);
+    }
+    
+    i {
+      color: vars.$primary-color;
+    }
+  }
+}
+
+// Project cards
+.card {
+  transition: transform vars.$transition-speed ease;
+  
+  &:hover {
+    transform: translateY(-5px);
+  }
+}
+
+// Contact form
+#contact-form {
+  .card {
+    border-radius: 10px;
+  }
+  
+  .form-control {
+    border-radius: 5px;
+    padding: 0.8rem;
+  }
+  
+  .btn-primary {
+    padding: 0.8rem 2rem;
+    border-radius: 50px;
+  }
+}
+
+// Media queries for responsiveness
+@media (max-width: 768px) {
+  .profile-img {
+    width: 150px;
+    height: 150px;
+  }
+  
+  .skills-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .profile-img {
+    width: 120px;
+    height: 120px;
+  }
+  
+  .skills-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+} 

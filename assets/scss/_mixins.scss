@@ -1,0 +1,97 @@
+// Import color module and variables
+@use "sass:color";
+@use "variables" as vars;
+
+// Flexbox mixins
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+// Media query mixins
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == xs {
+    @media (max-width: #{vars.$breakpoint-sm - 1}) {
+      @content;
+    }
+  } @else if $breakpoint == sm {
+    @media (min-width: #{vars.$breakpoint-sm}) and (max-width: #{vars.$breakpoint-md - 1}) {
+      @content;
+    }
+  } @else if $breakpoint == md {
+    @media (min-width: #{vars.$breakpoint-md}) and (max-width: #{vars.$breakpoint-lg - 1}) {
+      @content;
+    }
+  } @else if $breakpoint == lg {
+    @media (min-width: #{vars.$breakpoint-lg}) and (max-width: #{vars.$breakpoint-xl - 1}) {
+      @content;
+    }
+  } @else if $breakpoint == xl {
+    @media (min-width: #{vars.$breakpoint-xl}) {
+      @content;
+    }
+  }
+}
+
+// Element styling mixins
+@mixin card-hover {
+  transition: transform vars.$transition-speed vars.$transition-timing, box-shadow vars.$transition-speed vars.$transition-timing;
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  }
+}
+
+@mixin button-style($bg-color: vars.$primary-color, $text-color: white) {
+  background-color: $bg-color;
+  color: $text-color;
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 50px;
+  font-weight: vars.$font-weight-bold;
+  transition: all vars.$transition-speed vars.$transition-timing;
+  
+  &:hover {
+    background-color: color.scale($bg-color, $lightness: -10%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+}
+
+// Text styling mixins
+@mixin heading-style {
+  font-weight: vars.$font-weight-bold;
+  margin-bottom: vars.$spacer;
+  color: vars.$secondary-color;
+}
+
+@mixin section-title {
+  @include heading-style;
+  text-align: center;
+  margin-bottom: vars.$spacer * 2;
+  position: relative;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 3px;
+    background-color: vars.$primary-color;
+  }
+} 
